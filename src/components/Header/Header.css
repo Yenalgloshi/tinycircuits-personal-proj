@@ -1,0 +1,18 @@
+.Header{
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+
+}
+
+.hdr-links{
+  width: 85%;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 60px;
+  /* align-items: center; */
+} 
