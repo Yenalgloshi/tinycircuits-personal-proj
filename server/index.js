@@ -1,15 +1,22 @@
 //IMPORTS / REQUIRES
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 
 
 //VARIABLES
 const app = express();
-
-let {SERVER_PORT} = process.env;
+const c = require('./controller');
+let {SERVER_PORT, SESSION_SECRET} = process.env;
 
 
 //TOP LEVEL MIDDLEWARE
+app.use(session({
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
 // massive(process.env.CONNECTION_STRING).then(dbInstance =>{
 //   app.set('db', dbInstance);
 // }).catch(err => console.log(err))
@@ -18,7 +25,7 @@ let {SERVER_PORT} = process.env;
 
 
 //ENDPOINTS
-
+app.post('api/auth/signin', c.signIn)
 
 
 //LISTEN

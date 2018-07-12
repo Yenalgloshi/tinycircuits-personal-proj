@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
+import axios from 'axios';
 import './Shop.css';
 
 class Shop extends Component {
@@ -19,7 +20,7 @@ class Shop extends Component {
   }
 
   handlePageNumClick(){
-    
+
   }
 
   render(){

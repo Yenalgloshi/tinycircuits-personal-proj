@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
+import axios from 'axios';
 import './Login.css';
 
 class Login extends Component {
@@ -16,6 +17,8 @@ class Login extends Component {
 
   }
 
+  
+
   handleEmailChange(val){
     this.setState({username: val})
   }
@@ -25,23 +28,38 @@ class Login extends Component {
   }
 
   handleLoginRequest(){
-  //   axios.post('/api/auth/login', {
-  //     username: this.state.username,
-  //     password: this.state.password
-  //  }).then (response => {
-  //    // Part of React History lib. Keeps track of routing history; 
-  //    //  it pushes a new entry onto the history stack
-  //    this.props.history.push('/dashboard');           
-  //  }).catch(response => {
-  //    alert('Username and/or Password not found')
-  //  })
+    axios.post('/api/auth/signin', {
+      username: this.state.email,
+      password: this.state.password
+   }).then (response => {
+     // Part of React History lib. Keeps track of routing history; 
+     //  it pushes a new entry onto the history stack
+     this.props.history.push('/AcctDetails');           
+   }).catch(response => {
+     alert('Username and/or Password not found')
+   })
   }
 
   render(){
     return(
-      <div>
+      <div className='Login'>
         <Header/>
-        Login page
+        <div className='login-input-wpr'>
+          CUSTOMER LOGIN
+          Email
+          <input onChange={ (e) => this.handleEmailChange( e.target.value )} 
+                 className="login-email" 
+                 type="text"/>
+          Password
+          Forgot your password?
+          <input onChange={ (e) => this.handlePasswordChange( e.target.value )} 
+                 className="login-password" 
+                 type="text"/>
+          <button onClick={ this.handleLoginRequest } 
+                  className="login-btn-login">>SIGN IN</button>
+          New Customer?
+          Sign up
+        </div>
       </div>
     )
   }
