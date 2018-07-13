@@ -2,12 +2,13 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-
+const massive = require('massive');
+const bodyParser = require('body-parser');
 
 //VARIABLES
 const app = express();
 const c = require('./controller');
-let {SERVER_PORT, SESSION_SECRET} = process.env;
+let {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
 
 //TOP LEVEL MIDDLEWARE
@@ -17,15 +18,16 @@ app.use(session({
   saveUninitialized: false
 }));
 
-// massive(process.env.CONNECTION_STRING).then(dbInstance =>{
-//   app.set('db', dbInstance);
-// }).catch(err => console.log(err))
+massive(CONNECTION_STRING).then(dbInstance =>{
+  app.set('db', dbInstance);
+}).catch(err => console.log(err))
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 
 //ENDPOINTS
-app.post('api/auth/signin', c.signIn)
+app.post('/api/auth/signin', c.signIn)
+// app.get('/api/auth', c.authUser)
 
 
 //LISTEN

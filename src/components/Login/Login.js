@@ -17,10 +17,12 @@ class Login extends Component {
 
   }
 
-  
+  // componentDidMount(){
+  //   axios.get('api/auth')
+  // }
 
   handleEmailChange(val){
-    this.setState({username: val})
+    this.setState({email: val})
   }
 
   handlePasswordChange(val){
@@ -29,14 +31,14 @@ class Login extends Component {
 
   handleLoginRequest(){
     axios.post('/api/auth/signin', {
-      username: this.state.email,
+      email: this.state.email,
       password: this.state.password
    }).then (response => {
      // Part of React History lib. Keeps track of routing history; 
      //  it pushes a new entry onto the history stack
      this.props.history.push('/AcctDetails');           
    }).catch(response => {
-     alert('Username and/or Password not found')
+     alert('Email and/or password not found')
    })
   }
 

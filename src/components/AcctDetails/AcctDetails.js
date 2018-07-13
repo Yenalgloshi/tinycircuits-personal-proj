@@ -5,9 +5,11 @@ import './AcctDetails.css';
 class AcctDetails extends Component {
   render(){
     return(
-      <div>
+      <div className='AcctDetails'>
         <Header/>
-        Account Details Page
+        <div className='ad-userInfo'>
+          Account Details Page
+        </div>
       </div>
     )
   }
