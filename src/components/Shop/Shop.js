@@ -26,9 +26,24 @@ class Shop extends Component {
 
   render(){
     return(
-      <div>
+      <div className='Shop'>
         <Header/>
-        Shopping page
+        <div className='shop-sort'>
+
+        </div>
+        <div className='shop-catagory-list'>
+
+        </div>
+        <div className='shop-prod-wpr'>
+          <div className='shop-prod-content'>
+            <div classname='shop-prod-details'>
+
+            </div>
+          </div>
+          <div className='shop-pagination'>
+
+          </div>
+        </div>
         <Footer/>
       </div>
     )
