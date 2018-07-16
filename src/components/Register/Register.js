@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
+import Footer from './../Footer/Footer';
 import axios from 'axios';
 import './Register.css';
 
@@ -80,6 +81,7 @@ class Register extends Component {
             Returning Customer?
             Sign in
         </div>
+        <Footer/>
       </div>
     )
   }

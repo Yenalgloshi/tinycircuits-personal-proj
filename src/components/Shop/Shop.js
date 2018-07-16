@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
+import Footer from './../Footer/Footer';
 import axios from 'axios';
 import './Shop.css';
 
@@ -28,6 +29,7 @@ class Shop extends Component {
       <div>
         <Header/>
         Shopping page
+        <Footer/>
       </div>
     )
   }

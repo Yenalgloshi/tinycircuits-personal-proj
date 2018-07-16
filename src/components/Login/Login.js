@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
+import Footer from './../Footer/Footer';
 import axios from 'axios';
 import './Login.css';
 
@@ -62,6 +63,7 @@ class Login extends Component {
           New Customer?
           Sign up
         </div>
+        <Footer/>
       </div>
     )
   }
