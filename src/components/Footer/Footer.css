@@ -32,3 +32,12 @@ hr{
   position: absolute;
   bottom: 0;
 }
+
+.footer-pay-methods{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 27%;
+  margin-left: 37%;
+  margin-top: 40px;
+}

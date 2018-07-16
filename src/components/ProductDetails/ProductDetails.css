@@ -1,0 +1,10 @@
+.details-body{
+  padding-top: 100px;
+}
+
+.details-img-main{
+  width: 35%;
+  height: 20em;
+  border: 2px solid black;
+  margin: 10px;
+}

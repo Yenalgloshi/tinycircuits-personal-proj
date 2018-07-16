@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { amEx, applePay, dinersClub, discover, jcb, master, paypal, shopify, visa } from './../../assets/paymentSVG'
 import './Footer.css';
 
 class Footer extends Component{
@@ -43,7 +44,15 @@ class Footer extends Component{
         </div>
         <div className='footer'>
           <div className='footer-pay-methods'>
-            
+            {amEx}
+            {applePay}
+            {dinersClub}
+            {discover}
+            {jcb}
+            {master}
+            {paypal}
+            {shopify}
+            {visa}
           </div>
         </div>
        </div>
