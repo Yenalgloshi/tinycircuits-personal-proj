@@ -1,8 +1,12 @@
+.footer-main{
+  position: relative;
+}
+
 .sub-footer{
-  position: absolute;
   bottom: 100px;
   width: 100%;
-  height: 200px;
+  height: 100%;
+  padding-top: 40px;
 }
 .footer-content-wpr{
   display: flex;
@@ -26,11 +30,9 @@ hr{
 }
 
 .footer{
-  height: 100px;
+  height: 120px;
   width: 100%;
   background-color: black;
-  position: absolute;
-  bottom: 0;
 }
 
 .footer-pay-methods{
@@ -40,4 +42,5 @@ hr{
   width: 27%;
   margin-left: 37%;
   margin-top: 40px;
+  padding-top: 50px;
 }

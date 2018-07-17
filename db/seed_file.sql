@@ -16,12 +16,13 @@ zip integer,
 phone integer
 );
 
+DROP TABLE IF EXISTS tinyCircuits_inv; 
 
 CREATE TABLE IF NOT EXISTS tinyCircuits_inv (
 id serial NOT NULL,
 name varchar(100) NOT NULL,
 part_num varchar NOT NULL,
-price INT,
+price NUMERIC(4, 2),
 stock_qty INT,
 description varchar(1000),
 image varchar(600)
