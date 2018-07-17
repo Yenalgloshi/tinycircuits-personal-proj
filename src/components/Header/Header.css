@@ -1,5 +1,5 @@
 .Header{
-  height: 100px;
+  height: 120px;
   width: 100%;
   background-color: black;
   position: fixed;
@@ -8,11 +8,21 @@
 
 .hdr-links{
   width: 85%;
-  padding: 40px;
+  height: 100%;
+  /* padding: 40px; */
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-left: 60px;
-  /* align-items: center; */
+  align-items: center;
 } 
+
+.hdr-home-logo{
+  width: 200px;
+}
+
+.hdr-freeShip-logo{
+  width: 140px;
+  margin-top: -15px;
+}

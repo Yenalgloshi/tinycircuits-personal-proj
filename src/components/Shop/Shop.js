@@ -16,6 +16,12 @@ class Shop extends Component {
     }    
   }
 
+  componentDidMount(){
+    axios.get('/api/product').then(response => {
+      this.setState({products: response.data})
+    })
+  }
+
   handleSortSelector(){
 
   }
@@ -25,7 +31,17 @@ class Shop extends Component {
   }
 
   render(){
-    return(
+    let prodList = this.state.products.map((item, i) => {
+      return (
+        <div classname='shop-prod-details'>
+          <img src={item.image} alt=""/>
+          <h1>{item.name}</h1>
+          <h2>{item.price}</h2>
+          <p>{item.description}</p>
+        </div>
+      )
+    })
+     return(
       <div className='Shop'>
         <Header/>
         <div className='shop-sort'>
@@ -35,10 +51,9 @@ class Shop extends Component {
 
         </div>
         <div className='shop-prod-wpr'>
+        <h1>ALL PRODUCTS</h1>
           <div className='shop-prod-content'>
-            <div classname='shop-prod-details'>
-
-            </div>
+            {prodList}
           </div>
           <div className='shop-pagination'>
 

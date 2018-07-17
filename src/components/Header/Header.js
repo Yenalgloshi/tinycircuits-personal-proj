@@ -8,7 +8,14 @@ class Header extends Component{
     return (
       <div className="Header">
           <div className="hdr-links">
-            <Link to='/' style={{textDecoration: 'none', color: 'white'}}>HOME</Link>
+            <Link to='/'>
+              <img src={require('./../../assets/TinyCircuitsLogo.png')} 
+                   className='hdr-home-logo' 
+                   alt="home-logo" />
+            </Link>
+            <img src={require('./../../assets/free_shipping.png')} 
+                 className='hdr-freeShip-logo' 
+                 alt="free-ship"/>
             <Link to="Shop" style={{textDecoration: 'none', color: 'white'}}>SHOP</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>BLOG</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>LEARN</Link>

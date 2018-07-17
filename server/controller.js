@@ -33,8 +33,17 @@ module.exports = {
         })
       }
     })
-  }  
+  },  
 
+  prodList: (req, res, next) => {
+    const db = req.app.get('db');
+
+    db.get_prod_list().then(product => { res.status(200).send(product)})
+    .catch( err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
+  }
 
 
 
