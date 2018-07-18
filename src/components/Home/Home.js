@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import Slideshow from './../Slideshow/Slideshow';
+import tinyArcadePic from './HomeFeatured/feature1.jpg';
+import tinyDuinoPic from './HomeFeatured/feature2.jpg';
+import tutorialsPic from './HomeFeatured/feature3.jpg';
 import './Home.css';
 
 class Home extends Component {
@@ -22,10 +25,12 @@ class Home extends Component {
            <Slideshow/>
           </div>
           <div className='home-divider'>
-            Divider
+            <h2 id='divider-txt'>THE TINYDUINO ELECTRONICS PLATFORM <br/>MODULAR, SIMPLE, AND TINY</h2>
           </div>
           <div className='home-prod-links'>
-            Product Links
+            <img src={tinyArcadePic} width='380px' alt="tinyArcade"/>
+            <img src={tinyDuinoPic} width='380px' alt="tinyDuino"/>
+            <img src={tutorialsPic} width='380px' alt="tutorials"/>
           </div>
           <div className='home-prod-feat'>
             Featured Products

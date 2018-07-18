@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import './Slideshow.css';
+import slideshow1 from './Slides/slideshow_1.jpg';
+import slideshow2 from './Slides/slideshow_4.jpg';
+import slideshow3 from './Slides/slideshow_5.jpg';
+import slideshow4 from './Slides/slideshow_6.jpg';
 
 
 export default class Slideshow extends Component {
@@ -11,26 +16,24 @@ export default class Slideshow extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      arrows: true
     };
     return (
-      <div>
-        <h2>Fade</h2>
-        <Slider {...settings}>
+        <Slider {...settings} className='slider'>
           <div>
-            <img src='Slides/slideshow_1' />
+           <img src={slideshow1} />
           </div>
           <div>
-            <img src='Slides/slideshow_4' />
+           <img src={slideshow2} />
           </div>
           <div>
-            <img src='Slides/slideshow_5' />
+           <img src={slideshow3} />
           </div>
           <div>
-            <img src='Slides/slideshow_6' />
+           <img src={slideshow4} />
           </div>
         </Slider>
-      </div>
     );
   }
 }
