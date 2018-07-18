@@ -1,1 +1,1 @@
-select * from tinycircuits_inv
+select * from tinycircuits_inv;
