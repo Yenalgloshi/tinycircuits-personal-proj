@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
+import {Link} from 'react-router-dom';
+import { addToCart } from '../../redux/reducer';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import './ProductDetails.css';
 
@@ -15,7 +18,10 @@ class ProductDetails extends Component {
       numInStock: 0,
       description: '',
       picture: '',
+      cartQty: 1
     }    
+    this.handleAddToCart = this.handleAddToCart.bind(this);
+
   }
   
   componentDidMount(){
@@ -27,8 +33,6 @@ class ProductDetails extends Component {
         description: res.data[0].description,
         picture: res.data[0].image})
       })
-      console.log('url item id', this.props.match.params.itemId);
-      
     }
     
     handleSortSelector(){
@@ -38,13 +42,30 @@ class ProductDetails extends Component {
     handlePageNumClick(){
       
     }
+
+    handleAddToCart(){
+      console.log(this.state);
+      
+      this.props.addToCart(this.state)
+    }
     
     render(){
+      console.log(this.props.cart);
+      
       return(
         <div className='details'>
         <Header/>
         <div className='details-body'>
           <div className='details-breadcrumb'>
+            <ul>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+              <Link to="/Shop">
+                <li>All Products</li>
+              </Link>
+              <li>{this.state.name}</li>
+            </ul>
             
           </div>
           <div className='details-img-wpr'>
@@ -59,13 +80,23 @@ class ProductDetails extends Component {
             <h2>{this.state.name}</h2>
             <p>{this.state.partNum}</p>
             <h1>$ {this.state.price}</h1>
-            <p>{this.state.numInStock}</p>
-            <input value={this.state.qty} type="number" name="quantity" min="1" max="5"/>
+            <p>{this.state.numInStock} in stock</p>
+            <p>Qty</p>
+            <input id='details-qty-input' 
+                   type="number" 
+                   value= "1" 
+                   name="quantity" 
+                   step="1"
+                   min="1" 
+                   max="50"/>
             <button onClick={ this.handleAddToCart } 
-                      className="details-btn-login">ADD TO CART</button>
-            <ul>
+                      className="blue-btn">ADD TO CART</button>
+            <p>{this.state.description}</p>
+            <ul style={{listStyleType: 'disc', listStylePosition: 'inside'}} >
+              <hr/>
               <li>Free Shipping for orders over $50</li>
               <li>Available Worldwide</li>
+              <hr/>
             </ul>
 
           </div>
@@ -80,4 +111,12 @@ class ProductDetails extends Component {
   }
 }
 
-export default ProductDetails;
+function mapStateToProps(state){
+  return {
+    cart: state.cart
+  }
+}
+
+const actions = {addToCart}
+
+export default connect(mapStateToProps, actions) (ProductDetails);

@@ -27,7 +27,7 @@ class Header extends Component{
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>CONTACT</Link>
             <Link to="/Login" style={{textDecoration: 'none', color: 'white'}}>LOGIN</Link>
             SEARCH
-            <button>CART</button>
+            <button className='hdr-btn-cart'>CART</button>
           </div>
       </div>
     );

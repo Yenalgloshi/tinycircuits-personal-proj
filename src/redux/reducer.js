@@ -11,7 +11,8 @@ const DEL_FROM_CART = 'DEL_FROM_CART';
 export default function reducer(state = initialState, action){
   switch(action.type) {
     case ADD_TO_CART:
-      return Object.assign({}, state, action.payload)
+      let currentCart = [...state.cart, action.payload]
+      return Object.assign({}, state, {cart: currentCart})
     
     case DEL_FROM_CART:
       return initialState;

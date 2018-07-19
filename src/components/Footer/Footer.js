@@ -36,9 +36,10 @@ class Footer extends Component{
               <p>Sign up to get the latest on sales, new releases and more...</p>
               <input onChange={ (e) => this.handleEmailInputChange( e.target.value )} 
                       className="footer-email-input" 
-                      type="text"/>
+                      type="text"
+                      placeholder="Enter your email address..."/>
               <button onClick={ this.handleSignUp } 
-                        className="login-btn-login">>SIGN UP</button>
+                        className="blue-btn">SIGN UP</button>
             </div>
           </div>
         </div>
