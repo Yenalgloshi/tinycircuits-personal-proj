@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import { amEx, applePay, dinersClub, discover, jcb, master, paypal, shopify, visa } from './../../assets/paymentSVG'
 import './Footer.css';
 

@@ -29,6 +29,7 @@ app.use(bodyParser.json());
 app.post('/api/auth/signin', c.signIn)
 app.post('/api/auth/register', c.regUser)
 app.get('/api/product', c.prodList)
+app.get('/api/productDetails/:itemId', c.itemDetails)
 // app.get('/api/auth', c.authUser)
 
 

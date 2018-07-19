@@ -43,7 +43,19 @@ module.exports = {
       console.log(err);
       res.status(500).send(err)
     })
+  },
+
+  itemDetails: (req, res, next) => {
+    const db = req.app.get('db');
+    let id = parseInt(req.params.itemId);
+    console.log('req.params', id);
+    db.get_prod_item(id).then(item => { res.status(200).send(item)})
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
   }
+
 
 
 

@@ -16,7 +16,7 @@ class Header extends Component{
             <img src={require('./../../assets/free_shipping.png')} 
                  className='hdr-freeShip-logo' 
                  alt="free-ship"/>
-            <Link to="Shop" style={{textDecoration: 'none', color: 'white'}}>SHOP</Link>
+            <Link to="/Shop" style={{textDecoration: 'none', color: 'white'}}>SHOP</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>BLOG</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>LEARN</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>DISTRIBUTORS</Link>
@@ -25,7 +25,7 @@ class Header extends Component{
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>TWITTER</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>FACEBOOK</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>CONTACT</Link>
-            <Link to="Login" style={{textDecoration: 'none', color: 'white'}}>LOGIN</Link>
+            <Link to="/Login" style={{textDecoration: 'none', color: 'white'}}>LOGIN</Link>
             SEARCH
             <button>CART</button>
           </div>

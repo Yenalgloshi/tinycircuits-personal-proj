@@ -38,13 +38,17 @@ class Shop extends Component {
           <hr id='shop-prod-divider'/>
           <div className='shop-prod-content'>
             <div className='shop-prod-img-container'>
-              <img src={item.image} className='shop-prod-img' alt=""/>
+              <Link to={`/productDetails/${item.id}`}>
+                <img src={item.image} className='shop-prod-img' alt={this.state.name}/>
+              </Link>
             </div>
             <div className='shop-prod-details'>
-              <h2 className='shop-item-name'>{item.name}</h2>
+              <Link to={`/productDetails/${item.id}`} style={{textDecoration: 'none', color: '#55c0d4'}}>
+                <h2 className='shop-item-name'>{item.name}</h2>
+              </Link>
               <h3 className='shop-item-price'>$ {item.price}</h3>
               <p className='shop-item-description'>{item.description}</p>
-              <Link to="/productDetails" style={{textDecoration: 'none', color: '#55c0d4'}}>Learn More &#8594;</Link>
+              <Link to={`/productDetails/${item.id}`} key={i} style={{textDecoration: 'none', color: '#55c0d4'}}>Learn More &#8594;</Link>
             </div>
           </div>
         </div>

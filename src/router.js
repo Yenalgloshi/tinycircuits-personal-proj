@@ -16,6 +16,6 @@ export default (
     <Route path='/Login' component={ Login } />
     <Route path='/AcctDetails' component={ AcctDetails } />
     <Route path='/Register' component={ Register } />
-    <Route path='/productDetails' component={ ProductDetails } />
+    <Route path='/productDetails/:itemId' component={ ProductDetails } />
   </Switch>
 )

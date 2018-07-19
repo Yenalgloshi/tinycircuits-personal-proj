@@ -1,6 +1,6 @@
 // INITIAL STATE
 let initialState = {
-  cart:''
+  cart:[]
 }
 
 // CONST VARIABLES

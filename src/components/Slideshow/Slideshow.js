@@ -14,24 +14,25 @@ export default class Slideshow extends Component {
       fade: true,
       autoplay: true,
       infinite: true,
-      speed: 500,
+      speed: 1500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows: true
+      arrows: true,
+      autoplaySpeed: 5000
     };
     return (
         <Slider {...settings} className='slider'>
           <div>
-           <img src={slideshow1} />
+           <img src={slideshow1} alt='tiny-arcade'/>
           </div>
           <div>
-           <img src={slideshow2} />
+           <img src={slideshow2} alt='tiny-saber'/>
           </div>
           <div>
-           <img src={slideshow3} />
+           <img src={slideshow3} alt='tiny-gps'/>
           </div>
           <div>
-           <img src={slideshow4} />
+           <img src={slideshow4} alt='tiny-iot'/>
           </div>
         </Slider>
     );

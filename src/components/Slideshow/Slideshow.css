@@ -1,7 +1,12 @@
 .slider div img{
   width: 100%;
+
 }
 
 .home-slideshow > div > button{
   display: none !important;
+}
+
+#root > div > div > div.home-body > div.home-slideshow > div > ul{
+  bottom: 25px;
 }
