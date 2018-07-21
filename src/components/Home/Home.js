@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import Slideshow from './../Slideshow/Slideshow';
@@ -15,7 +17,28 @@ class Home extends Component {
       featuredProd: []
     }
   }
+
+  componentDidMount(){
+    axios.get('/api/featuredProduct').then(response => {
+      console.log('response.data', response.data);
+      
+      this.setState({featuredProd: response.data})
+    })
+  }
+
   render(){
+    let featuredItems = this.state.featuredProd.map((item, i) => {
+      console.log('featured items', item);
+      
+      return(
+        <div className='home-featProd'>
+          <Link to={`/productDetails/${item.id}`}>
+            <img src={item.image} className='featured-img' key={i} alt={item.name}/>
+            <h3 id='feat-item-name'>{item.name}</h3>
+          </Link>
+        </div>
+      )
+    })
 
     return(
       <div className='Home'>
@@ -32,8 +55,10 @@ class Home extends Component {
             <img src={tinyDuinoPic} width='380px' alt="tinyDuino"/>
             <img src={tutorialsPic} width='380px' alt="tutorials"/>
           </div>
+            <hr id='feat-hr'/>
+            <h2 id='feat-h2'>Featured Products</h2>
           <div className='home-prod-feat'>
-            Featured Products
+            {featuredItems}
           </div>
         </div>
         <Footer/>

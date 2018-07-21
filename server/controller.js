@@ -54,6 +54,16 @@ module.exports = {
       console.log(err);
       res.status(500).send(err)
     })
+  },
+
+  featuredProd: (req, res, next) => {
+    const db = req.app.get('db');
+
+    db.get_featured_prod().then(featured => { res.status(200).send(featured)})
+    .catch( err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
   }
 
 

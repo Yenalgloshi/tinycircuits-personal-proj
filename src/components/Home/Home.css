@@ -41,5 +41,32 @@
 }
 
 .home-prod-feat{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  /* height: 240px; */
+  width: 81%;
+}
 
+.featured-img{
+  width: 380px;
+}
+
+#feat-item-name{
+  width: 380px;
+  text-decoration: none;
+}
+
+#feat-hr{
+  width: 78%;
+  margin-top: 50px;
+}
+
+#feat-h2{
+  text-align: left;
+  margin-left: 165px;
 }
