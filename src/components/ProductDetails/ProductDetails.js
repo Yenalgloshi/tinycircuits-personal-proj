@@ -21,6 +21,7 @@ class ProductDetails extends Component {
       cartQty: 1
     }    
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleQtyChange = this.handleQtyChange.bind(this);
 
   }
   
@@ -45,12 +46,16 @@ class ProductDetails extends Component {
 
     handleAddToCart(){
       console.log(this.state);
-      
       this.props.addToCart(this.state)
     }
+
+    handleQtyChange(e){
+      this.setState({cartQty: e.target.value})
+    }
+
     
     render(){
-      console.log(this.props.cart);
+      
       
       return(
         <div className='details'>
@@ -61,9 +66,11 @@ class ProductDetails extends Component {
               <Link to="/">
                 <li>Home</li>
               </Link>
+              <p> / </p>
               <Link to="/Shop">
                 <li>All Products</li>
               </Link>
+              <p> / </p>
               <li>{this.state.name}</li>
             </ul>
             
@@ -84,11 +91,11 @@ class ProductDetails extends Component {
             <p>Qty</p>
             <input id='details-qty-input' 
                    type="number" 
-                   value= "1" 
+                   value= {this.state.cartQty} 
                    name="quantity" 
-                   step="1"
                    min="1" 
-                   max="50"/>
+                   max="50"
+                   onChange={this.handleQtyChange}/>
             <button onClick={ this.handleAddToCart } 
                       className="blue-btn">ADD TO CART</button>
             <p>{this.state.description}</p>
@@ -117,6 +124,6 @@ function mapStateToProps(state){
   }
 }
 
-const actions = {addToCart}
+const actions = {addToCart}   // 
 
 export default connect(mapStateToProps, actions) (ProductDetails);

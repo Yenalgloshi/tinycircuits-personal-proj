@@ -7,6 +7,7 @@ import Login from './components/Login/Login';
 import AcctDetails from './components/AcctDetails/AcctDetails';
 import Register from './components/Register/Register';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import Cart from './components/Cart/Cart';
 
 
 export default (
@@ -17,5 +18,6 @@ export default (
     <Route path='/AcctDetails' component={ AcctDetails } />
     <Route path='/Register' component={ Register } />
     <Route path='/productDetails/:itemId' component={ ProductDetails } />
+    <Route path='/Cart' component={ Cart } />
   </Switch>
 )

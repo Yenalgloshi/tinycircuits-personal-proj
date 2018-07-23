@@ -8,8 +8,8 @@
   list-style: none;
 }
 
-ul.details-breadcrumb li{
-  display: inline;
+.details-breadcrumb ul li{
+
 }
 
 ul.details-breadcrumb li:hover{
@@ -17,7 +17,7 @@ ul.details-breadcrumb li:hover{
 }
 
 .details-img-wpr{
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   margin-left: 200px;
 }
