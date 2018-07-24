@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import { connect } from 'react-redux';
@@ -15,6 +16,12 @@ class Cart extends Component {
     }
   }
 
+  componentDidMount(){
+    axios.get('/api/cart/get').then( res => {
+      this.setState({cartItems: res.data})
+    })
+}
+
   handleCheckoutBtnClick(){
 
   }
@@ -24,11 +31,11 @@ class Cart extends Component {
   }
 
   render(){
-    console.log('from Redux store', this.props.cart);
-    let itemsInCart = this.props.cart.map((item, i) => {
+    console.log('cart from database ', this.state.cartItems)
+    let itemsInCart = this.state.cartItems.map((item, i) => {
       return(
           <div className='cart-items-list-wpr'>
-            <img src={item.picture} className='cart-item-img' alt={item.name}/>
+            <img src={item.image} className='cart-item-img' alt={item.name}/>
             <div className='cart-item-details'>
               <p>{item.name}</p>
               <p>$ {item.price} USD</p>

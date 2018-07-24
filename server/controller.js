@@ -66,15 +66,45 @@ module.exports = {
     })
   },
 
-  cartAdd: (req, res, next) => {
+  cartAdd: (req, res, next) => { 
     let {itemID, qty} = req.body;
     req.session.cart.push({
        itemID,
        qty
     })
-    console.log('cart items on sessions', req.session.cart);
-    
-  }
+    res.sendStatus(200)
+  },
 
+  getCart: (req, res, next) => {
+    // transfer quantity count from req.session.cart to detailed cart array
+    function addQuantity(cart, detailedCart) {
+      cart.forEach((el, i)=>{
+        detailedCart[i].quantity = el.qty
+      })
+      return detailedCart
+    }
+    // get array of detailed items from DB based on req.session.cart
+    function getDetailedItems(cart){
+      const db = req.app.get('db');
+      let promiseArray = []
+      // loop through session cart, create array of promises
+      // which will return the detailed item 
+      for( let i=0; i < cart.length; i++){
+        promiseArray.push(
+          db.get_prod_item(+cart[i].itemID).then(item=>item[0])
+        )  
+      }
+      // Promise.all takes array of promises and resolves with 
+      // the array of resolved promises
+      return Promise.all(promiseArray)
+    }
+    // Since this function returns a promise, .then is attached
+    getDetailedItems(req.session.cart).then(result=>{
+      // push that result through the addQuantity function
+      // to give each item a quantity value
+      result = addQuantity(req.session.cart, result)
+      res.send(result)
+    })
+  }
 
 }
