@@ -24,6 +24,15 @@ massive(CONNECTION_STRING).then(dbInstance =>{
 
 app.use(bodyParser.json());
 
+function checkForCart(req, res, next){
+  if(!req.session.cart){
+    req.session.cart = []
+  }
+  next()
+}
+
+app.use(checkForCart);
+
 
 //ENDPOINTS
 app.post('/api/auth/signin', c.signIn)

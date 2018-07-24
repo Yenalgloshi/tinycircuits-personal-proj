@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Checkout.css';
 
@@ -13,15 +14,72 @@ class Checkout extends Component {
       company: '',
       address: '',
       city: '',
-      state: '',
+      usState: '',
       zip: null,
       phone: null,
-      cart: [],
+      cart: [{image: "image1", name: "name1", price: "price1"}, {image: "image2", name: "name2", price: "price2"}, {image: "image3", name: "name3", price: "price3"}],
       total: 0
     }
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleLastNameChange = this.handleLastNameChange.bind(this);
+    this.handleCoChange = this.handleCoChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleStateSelector = this.handleStateSelector.bind(this);
+    this.handleZipChange = this.handleZipChange.bind(this);
+    this.handlePhoneChange = this.handlePhoneChange.bind(this);
+
   }
 
+  handleEmailChange(e){
+    this.setState({email: e.target.value})
+  }
+
+  handleFirstNameChange(e){
+    this.setState({firstName: e.target.value})
+  }
+
+  handleLastNameChange(e){
+    this.setState({lastName: e.target.value})
+  }
+
+  handleCoChange(e){
+    this.setState({company: e.target.value})
+  }
+
+  handleAddressChange(e){
+    this.setState({address: e.target.value})
+  }
+
+  handleCityChange(e){
+    this.setState({city: e.target.value})
+  }
+
+  handleStateSelector(e){
+    this.setState({email: e.target.value})
+  }
+
+  handleZipChange(e){
+    this.setState({zip: e.target.value})
+  }
+
+  handlePhoneChange(e){
+    this.setState({phone: e.target.value})
+  }
+
+
+
   render(){
+    let checkoutItems = this.state.cart.map((item, i) => {
+      return(
+        <div className='sb-checkout-item'>
+          <p>{item.image}</p>
+          <p>{item.name}</p>
+          <p>{item.price}</p>
+        </div>
+      )
+    })
     return(
       <div className='Checkout'>
         <div className='contact-main-container'>
@@ -33,20 +91,39 @@ class Checkout extends Component {
           </div>
           <div className='contact-main-email'>
             <p>Contact information</p>
-            <input onChange={this.handleEmailChange} type="text" placeholder='Email'/>
+            <input onChange={this.handleEmailChange} 
+                   className="input-field-full"
+                   type="text" 
+                   placeholder='Email'/>
           </div>
           <div className='contact-main-input-wpr'>
             <p>Shipping Address</p>
             <div className='contact-main-inputs'>
-              <input onChange={this.handleFirstNameChange} type="text" placeholder='First Name'/>
-              <input onChange={this.handleLastNameChange} type="text" placeholder='Last Name'/>
-              <input onChange={this.handleCoChange} type="text" placeholder='Company'/>
-              <input onChange={this.handleAddressChange} type="text" placeholder='Address'/>
-              <input onChange={this.handleCityChange} type="text" placeholder='City'/>
+              <input onChange={this.handleFirstNameChange} 
+                     className="input-field-half"
+                     type="text" 
+                     placeholder='First Name'/>
+              <input onChange={this.handleLastNameChange} 
+                     className="input-field-half"
+                     type="text" 
+                     placeholder='Last Name'/>
+              <input onChange={this.handleCoChange} 
+                     className="input-field-full"
+                     type="text" 
+                     placeholder='Company'/>
+              <input onChange={this.handleAddressChange} 
+                     className="input-field-full"
+                     type="text" 
+                     placeholder='Address'/>
+              <input onChange={this.handleCityChange} 
+                     className="input-field-full"
+                     type="text" 
+                     placeholder='City'/>
               <select onChange={(e) => this.handleStateSelector(e.target.value)}
+                      className="input-field-half"
                       name="" 
                       id=""
-                      value={this.state.state}>
+                      value={this.state.usState}>
                 <option value="">State</option>
                 <option value="Alabama">Alabama</option>
                 <option value="Alaska">Alaska</option>
@@ -100,19 +177,46 @@ class Checkout extends Component {
                 <option value="Wisconsin">Wisconsin</option>
                 <option value="Wyoming">Wyoming</option>
                       </select>
-              <input onChange={this.handlePhoneChange} type="text" placeholder='Phone'/>
+              <input onChange={this.handleZipChange} 
+                     className="input-field-half"
+                     type="text" 
+                     placeholder='Zip'/>
+              <input onChange={this.handlePhoneChange} 
+                     className="input-field-full"
+                     type="text" 
+                     placeholder='Phone'/>
+            </div>
+            <div className='contact-main-order'>
+              <Link to='/Cart'>
+                 <p>  Return to cart </p>
+              </Link>
+              <button>Complete Order</button>
             </div>
           </div>
           <div className='contact-main-footer'>
-
+            <p>Refund policy</p>
+            <p>Privacy policy</p>
+            <p>Terms of service</p>
           </div>
         </div>
         <div className='contact-sidebar-container'>
           <div className='sb-cart-list'>
-
+            {checkoutItems}
           </div>
           <div className='sb-total'>
-            
+            <div className='subtotal'>
+              <p>Subtotal</p>
+              <p>$</p>
+            </div>
+            <div className='shipping'>
+              <p>Shipping</p>
+              <p>Free</p>
+            </div>
+            <div className='total'>
+              <h4>Total</h4>
+              <h3>USD</h3>
+              <h2>$</h2>
+            </div>
           </div>
         </div>
       </div>

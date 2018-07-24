@@ -45,12 +45,13 @@ class ProductDetails extends Component {
     }
 
     handleAddToCart(){
-      console.log(this.state);
-      this.props.addToCart(this.state)
-
-      // axios.post('/api/cart/add', ).then(res => {
-
-      // })
+      // console.log(this.state);
+      // this.props.addToCart(this.state)
+      let itemID = this.props.match.params.itemId;
+      let qty = this.state.cartQty;
+      axios.post('/api/cart/add', {itemID, qty}).then(res => {
+      
+     })
     }
 
     handleQtyChange(e){

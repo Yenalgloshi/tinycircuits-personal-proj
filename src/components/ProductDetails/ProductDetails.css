@@ -62,6 +62,8 @@ ul.details-breadcrumb li:hover{
 
 .blue-btn:hover{background-color: black;}
 
+.blue-btn:active{background-color: #ff8d5c}
+
 .details-description{
 
 }

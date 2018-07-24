@@ -67,13 +67,13 @@ module.exports = {
   },
 
   cartAdd: (req, res, next) => {
-    const db = req.app.get('db');
-
-    db.add_to_cart().then(cartItem => { res.status(200).send(cartItem)})
-    .catch( err => {
-      console.log(err);
-      res.status(500).send(err)
+    let {itemID, qty} = req.body;
+    req.session.cart.push({
+       itemID,
+       qty
     })
+    console.log('cart items on sessions', req.session.cart);
+    
   }
 
 

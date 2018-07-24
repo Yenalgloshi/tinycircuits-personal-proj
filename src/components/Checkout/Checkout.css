@@ -1,0 +1,108 @@
+.Checkout{
+
+}
+
+.contact-main-container{
+  float: left;
+  width: 57%;
+  padding-left: 10%;
+  padding-right: 3%;
+  padding-top: 50px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.contact-main-hdr{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contact-main-paypal{
+
+}
+
+.input-field-full{
+  width: 96%;
+  height: 40px;
+  margin: 10px;
+}
+
+.input-field-half{
+  width: 46%;
+  height: 40px;
+  margin: 10px;
+}
+
+.contact-main-email{
+  
+}
+
+.contact-main-input-wpr{
+  
+}
+
+.contact-main-inputs{
+  
+}
+
+.contact-main-order{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contact-main-footer{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.contact-sidebar-container{
+  float: right;
+  width: 43%;
+  height: 100vh;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  padding-top: 50px;
+}
+
+.sb-cart-list{
+  
+}
+
+.sb-checkout-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sb-total{
+  
+}
+
+.subtotal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 21%;
+  padding-left: 12%;
+}
+
+.shipping{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 21%;
+  padding-left: 12%;
+}
+
+.total{
+  display: flex;
+  flex-direction: row;
+  padding-left: 11%;
+}
+
+.total h3{
+  margin-left: 40px;
+}
