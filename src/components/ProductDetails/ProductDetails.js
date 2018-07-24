@@ -47,6 +47,10 @@ class ProductDetails extends Component {
     handleAddToCart(){
       console.log(this.state);
       this.props.addToCart(this.state)
+
+      // axios.post('/api/cart/add', ).then(res => {
+
+      // })
     }
 
     handleQtyChange(e){

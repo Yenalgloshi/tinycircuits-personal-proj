@@ -31,6 +31,7 @@ app.post('/api/auth/register', c.regUser)
 app.get('/api/product', c.prodList)
 app.get('/api/productDetails/:itemId', c.itemDetails)
 app.get('/api/featuredProduct', c.featuredProd)
+app.post('/api/cart/add', c.cartAdd)
 // app.get('/api/auth', c.authUser)
 
 

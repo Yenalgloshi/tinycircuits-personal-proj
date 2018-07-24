@@ -64,9 +64,17 @@ module.exports = {
       console.log(err);
       res.status(500).send(err)
     })
+  },
+
+  cartAdd: (req, res, next) => {
+    const db = req.app.get('db');
+
+    db.add_to_cart().then(cartItem => { res.status(200).send(cartItem)})
+    .catch( err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
   }
-
-
 
 
 }

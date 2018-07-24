@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import { connect } from 'react-redux';
@@ -58,7 +59,9 @@ class Cart extends Component {
             <hr/>
             <h4>$ 100.00 USD</h4>
             <p>Excluding tax & shipping</p>
-            <button>CHECKOUT</button>
+            <Link to={'/checkout'}>
+              <button>CHECKOUT</button>
+            </Link>
           </div>
         </div>
         <Footer/>
