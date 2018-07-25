@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { addToCart } from '../../redux/reducer';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import './Checkout.css';
 
@@ -17,7 +19,7 @@ class Checkout extends Component {
       usState: '',
       zip: null,
       phone: null,
-      cart: [{image: "image1", name: "name1", price: "price1"}, {image: "image2", name: "name2", price: "price2"}, {image: "image3", name: "name3", price: "price3"}],
+      cart: [],
       total: 0
     }
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -68,15 +70,17 @@ class Checkout extends Component {
     this.setState({phone: e.target.value})
   }
 
-
+  handleOrderBtnClick(userID){
+    // axios.put('/api/user/updateUser', userID).then()
+  }
 
   render(){
-    let checkoutItems = this.state.cart.map((item, i) => {
+    let checkoutItems = this.props.cart.map((item, i) => {
       return(
         <div className='sb-checkout-item'>
-          <p>{item.image}</p>
-          <p>{item.name}</p>
-          <p>{item.price}</p>
+          <img src={item.image} className='sb-checkout-image' alt={item.name}/>
+          <p id='sb-item-name'>{item.name}</p>
+          <p id='sb-item-price'>{item.price}</p>
         </div>
       )
     })
@@ -190,13 +194,19 @@ class Checkout extends Component {
               <Link to='/Cart'>
                  <p>  Return to cart </p>
               </Link>
-              <button>Complete Order</button>
+              <button onClick={this.handleOrderBtnClick}>Complete Order</button>
             </div>
           </div>
           <div className='contact-main-footer'>
-            <p>Refund policy</p>
-            <p>Privacy policy</p>
-            <p>Terms of service</p>
+            <Link to='/'>
+              <p>Refund policy</p>
+            </Link>
+            <Link to='/'>
+              <p>Privacy policy</p>
+            </Link>
+            <Link to='/'>
+              <p>Terms of service</p>
+            </Link>
           </div>
         </div>
         <div className='contact-sidebar-container'>
@@ -224,4 +234,10 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout;
+function mapStateToProps(state){
+  return{
+    cart: state.cart
+  }
+}
+
+export default connect(mapStateToProps)(Checkout);

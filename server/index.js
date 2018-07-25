@@ -45,6 +45,7 @@ app.get('/api/productDetails/:itemId', c.itemDetails)
 app.get('/api/featuredProduct', c.featuredProd)
 app.post('/api/cart/add', c.cartAdd)
 app.get('/api/cart/get', c.getCart)
+// app.put('/api/user/updateUser', c.updateUser)
 // app.get('/api/auth', c.authUser)
 
 

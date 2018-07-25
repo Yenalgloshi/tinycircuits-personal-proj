@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
+import { addToCart, setToCart } from '../../redux/reducer';
 import { connect } from 'react-redux';
 import './Cart.css';
 
@@ -19,6 +20,7 @@ class Cart extends Component {
   componentDidMount(){
     axios.get('/api/cart/get').then( res => {
       this.setState({cartItems: res.data})
+      this.props.setToCart(res.data)
     })
 }
 
@@ -31,7 +33,6 @@ class Cart extends Component {
   }
 
   render(){
-    console.log('cart from database ', this.state.cartItems)
     let itemsInCart = this.state.cartItems.map((item, i) => {
       return(
           <div className='cart-items-list-wpr'>
@@ -83,4 +84,6 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Cart);
+const actions = { addToCart, setToCart }
+
+export default connect(mapStateToProps, actions)(Cart);

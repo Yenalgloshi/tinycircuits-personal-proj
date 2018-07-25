@@ -55,8 +55,16 @@
 .contact-main-footer{
   display: flex;
   flex-direction: row;
-  
+  text-decoration: none;
 }
+
+.contact-main-footer p{
+  margin-right: 10px;
+  color: #55c0d4;
+  transition: color 0.2s ease-in-out;
+}
+
+.contact-main-footer p:hover{color: #39b5cd;}
 
 .contact-sidebar-container{
   float: right;
@@ -74,7 +82,23 @@
 .sb-checkout-item{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 80px;
+  width: 80%;
+}
+
+.sb-checkout-image{
+  width: 4.6em;
+  height: 4.6em;
+}
+
+#sb-item-name{
+  
+}
+
+#sb-item-price{
+  
 }
 
 .sb-total{

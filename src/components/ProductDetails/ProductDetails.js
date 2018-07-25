@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import {Link} from 'react-router-dom';
-import { addToCart } from '../../redux/reducer';
+// import { addToCart } from '../../redux/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './ProductDetails.css';
@@ -122,12 +122,6 @@ class ProductDetails extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return {
-    cart: state.cart
-  }
-}
 
-const actions = {addToCart}   // 
 
-export default connect(mapStateToProps, actions) (ProductDetails);
+export default ProductDetails;

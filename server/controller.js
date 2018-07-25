@@ -105,6 +105,19 @@ module.exports = {
       result = addQuantity(req.session.cart, result)
       res.send(result)
     })
+  },
+
+  updateUser: (req, res, next) => {
+    const db = req.app.get('db');
+
+    // if user doesn't exist in the db
+    db.add_user().then(user => { res.status(200).send(user)})
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
+
+    // else if there's already a user in the db
   }
 
 }
