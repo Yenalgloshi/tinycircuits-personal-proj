@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
-import { addToCart, setToCart } from '../../redux/reducer';
+import { addToCart, setToCart, setUser } from '../../redux/reducer';
 import { connect } from 'react-redux';
 import './Cart.css';
 
@@ -13,8 +13,11 @@ class Cart extends Component {
 
     this.state={
       cartItems: [],
-      subtotal: 0
+      subtotal: 0, 
+      email: ''
     }
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleCheckoutBtnClick = this.handleCheckoutBtnClick.bind(this);
   }
 
   componentDidMount(){
@@ -30,6 +33,18 @@ class Cart extends Component {
 
   handleQtySelector(){
 
+  }
+
+  handleEmailChange(e){
+    this.setState({email: e.target.value})
+  }
+
+  handleCheckoutBtnClick(){
+    axios.post('/api/user/info', {email: this.state.email})
+    .then(res => {
+      this.props.setUser(res.data)
+      this.props.history.push('/Checkout')
+    })
   }
 
   render(){
@@ -67,9 +82,12 @@ class Cart extends Component {
             <hr/>
             <h4>$ 100.00 USD</h4>
             <p>Excluding tax & shipping</p>
-            <Link to={'/checkout'}>
-              <button>CHECKOUT</button>
-            </Link>
+            <input onChange={this.handleEmailChange} 
+                   className="cart-email-input"
+                   type="text" 
+                   placeholder='Enter Email to Checkout'/>
+            
+              <button onClick={this.handleCheckoutBtnClick}>CHECKOUT</button>
           </div>
         </div>
         <Footer/>
@@ -84,6 +102,6 @@ function mapStateToProps(state){
   }
 }
 
-const actions = { addToCart, setToCart }
+const actions = { addToCart, setToCart, setUser }
 
 export default connect(mapStateToProps, actions)(Cart);

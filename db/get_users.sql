@@ -1,1 +1,1 @@
-select email from tinycircuits_users where email = $1;
+select * from tinycircuits_users where email = $1;

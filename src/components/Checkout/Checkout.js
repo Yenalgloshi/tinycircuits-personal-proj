@@ -6,23 +6,23 @@ import axios from 'axios';
 import './Checkout.css';
 
 class Checkout extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
-      email: '',
-      firstName: '',
-      lastName: '',
-      company: '',
-      address: '',
-      city: '',
-      usState: '',
-      zip: null,
-      phone: null,
+      userID: props.user.user_id,
+      email: props.user.email,
+      firstName: props.user.first_name || '',
+      lastName: props.user.last_name || '',
+      company: props.user.company || '',
+      address: props.user.address || '',
+      city: props.user.city || '',
+      usState: props.user.state || '',
+      zip: props.user.zip || null,
+      phone: props.user.phone || null,
       cart: [],
       total: 0
     }
-    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleCoChange = this.handleCoChange.bind(this);
@@ -31,12 +31,10 @@ class Checkout extends Component {
     this.handleStateSelector = this.handleStateSelector.bind(this);
     this.handleZipChange = this.handleZipChange.bind(this);
     this.handlePhoneChange = this.handlePhoneChange.bind(this);
+    this.handleOrderBtnClick = this.handleOrderBtnClick.bind(this);
 
   }
-
-  handleEmailChange(e){
-    this.setState({email: e.target.value})
-  }
+  
 
   handleFirstNameChange(e){
     this.setState({firstName: e.target.value})
@@ -59,7 +57,7 @@ class Checkout extends Component {
   }
 
   handleStateSelector(e){
-    this.setState({email: e.target.value})
+    this.setState({usState: e.target.value})
   }
 
   handleZipChange(e){
@@ -70,12 +68,23 @@ class Checkout extends Component {
     this.setState({phone: e.target.value})
   }
 
-  handleOrderBtnClick(userID){
-    // axios.put('/api/user/updateUser', userID).then()
+  handleOrderBtnClick(){
+    axios.put('/api/user/update',
+    {email: this.props.email,
+     first_name: this.props.first_name,
+     last_name: this.props.last_name,
+     company: this.props.company,
+     address: this.props.address,
+     city: this.props.city,
+     state: this.props.state,
+     zip: this.props.zip,
+     phone: this.props.phone
+     })
   }
 
   render(){
     let checkoutItems = this.props.cart.map((item, i) => {
+      console.log('redux store', this.props.cart)
       return(
         <div className='sb-checkout-item'>
           <img src={item.image} className='sb-checkout-image' alt={item.name}/>
@@ -90,16 +99,7 @@ class Checkout extends Component {
           <div className='contact-main-hdr'>
             <h2>TinyCircuits</h2>
           </div>
-          <div className='contact-main-paypal'>
 
-          </div>
-          <div className='contact-main-email'>
-            <p>Contact information</p>
-            <input onChange={this.handleEmailChange} 
-                   className="input-field-full"
-                   type="text" 
-                   placeholder='Email'/>
-          </div>
           <div className='contact-main-input-wpr'>
             <p>Shipping Address</p>
             <div className='contact-main-inputs'>
@@ -123,7 +123,7 @@ class Checkout extends Component {
                      className="input-field-full"
                      type="text" 
                      placeholder='City'/>
-              <select onChange={(e) => this.handleStateSelector(e.target.value)}
+              <select onChange={(e) => this.handleStateSelector(e)}
                       className="input-field-half"
                       name="" 
                       id=""
@@ -236,7 +236,8 @@ class Checkout extends Component {
 
 function mapStateToProps(state){
   return{
-    cart: state.cart
+    cart: state.cart,
+    user: state.user
   }
 }
 

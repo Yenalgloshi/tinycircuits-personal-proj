@@ -12,28 +12,6 @@ module.exports = {
     })
   },
 
-  regUser: (req, res, next) => {
-    const db = req.app.get('db');
-
-    db.get_users(req.body.email).then( (emailRes) => {
-      if(emailRes[0]) {
-        res.status(403).send('The email entered already exists. Please try a different email.')
-      } else {
-        db.user_reg(req.body.firstName, 
-                    req.body.lastName, 
-                    req.body.email, 
-                    req.body.password).then(regRes => {
-          console.log('registration results', regRes);
-          
-          req.session.userId = regRes[0].user_id;
-          res.status(403).send('Registration successful!');            
-        }).catch(err => {
-          console.log(err)
-          res.status(500).send(err)
-        })
-      }
-    })
-  },  
 
   prodList: (req, res, next) => {
     const db = req.app.get('db');
@@ -44,6 +22,7 @@ module.exports = {
       res.status(500).send(err)
     })
   },
+
 
   itemDetails: (req, res, next) => {
     const db = req.app.get('db');
@@ -56,6 +35,7 @@ module.exports = {
     })
   },
 
+
   featuredProd: (req, res, next) => {
     const db = req.app.get('db');
 
@@ -66,6 +46,7 @@ module.exports = {
     })
   },
 
+
   cartAdd: (req, res, next) => { 
     let {itemID, qty} = req.body;
     req.session.cart.push({
@@ -75,6 +56,7 @@ module.exports = {
     res.sendStatus(200)
   },
 
+  
   getCart: (req, res, next) => {
     // transfer quantity count from req.session.cart to detailed cart array
     function addQuantity(cart, detailedCart) {
@@ -107,17 +89,45 @@ module.exports = {
     })
   },
 
-  updateUser: (req, res, next) => {
+  
+  checkForUser: (req, res, next) => {
     const db = req.app.get('db');
 
-    // if user doesn't exist in the db
-    db.add_user().then(user => { res.status(200).send(user)})
+    db.get_users(req.body.email).then( (userRes) => {
+      if(userRes[0]) {
+        res.status(200).send(userRes[0])
+      } else {
+        db.add_user_email(req.body.email).then(userInfo => {
+          console.log('registration results', userInfo);
+          req.session.userId = userInfo[0].user_id;
+          res.status(200).send(userInfo[0]);            
+        }).catch(err => {
+          console.log(err)
+          res.status(500).send(err)
+        })
+      }
+    })
+  },
+
+  addNewUserInfo: (req, res, next) => {
+    const db = req.app.get('db');
+
+    db.update_user_info([req.body.first_name,
+                        req.body.last_name,
+                        req.body.company,
+                        req.body.address,
+                        req.body.city,
+                        req.body.state,
+                        req.body.zip,
+                        req.body.phone,
+                        req.body.email])
+    .then(user => { res.status(200).send(user)})
     .catch(err => {
       console.log(err);
       res.status(500).send(err)
     })
-
-    // else if there's already a user in the db
   }
 
+
 }
+

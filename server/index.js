@@ -39,13 +39,14 @@ app.use(checkForCart);
 
 //ENDPOINTS
 app.post('/api/auth/signin', c.signIn)
-app.post('/api/auth/register', c.regUser)
+// app.post('/api/auth/register', c.regUser)
 app.get('/api/product', c.prodList)
 app.get('/api/productDetails/:itemId', c.itemDetails)
 app.get('/api/featuredProduct', c.featuredProd)
 app.post('/api/cart/add', c.cartAdd)
 app.get('/api/cart/get', c.getCart)
-// app.put('/api/user/updateUser', c.updateUser)
+app.post('/api/user/info', c.checkForUser)
+app.put('/api/user/update', c.addNewUserInfo)
 // app.get('/api/auth', c.authUser)
 
 

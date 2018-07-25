@@ -1,12 +1,14 @@
 // INITIAL STATE
 let initialState = {
-  cart:[]
+  cart:[],
+  user:{}
 }
 
 // CONST VARIABLES
 const ADD_TO_CART = 'ADD_TO_CART';
-const DEL_FROM_CART = 'DEL_FROM_CART';
+const CLEAR_ENTIRE_CART = 'CLEAR_ENTIRE_CART';
 const SET_TO_CART = 'SET_TO_CART';
+const SET_USER = 'SET_USER';
 
 // REDUCER FUNCTION
 export default function reducer(state = initialState, action){
@@ -17,8 +19,11 @@ export default function reducer(state = initialState, action){
 
     case SET_TO_CART: 
       return Object.assign({}, state, {cart: action.payload})
+
+    case SET_USER:
+      return Object.assign({}, state, {user: action.payload})
     
-    case DEL_FROM_CART:
+    case CLEAR_ENTIRE_CART:
       return initialState;
 
     default: 
@@ -42,10 +47,17 @@ export function setToCart(cart){
   }
 }
 
-export function delFromCart(item){
+export function setUser(user){
+  return{
+    type: SET_USER,
+    payload: user
+  }
+}
+
+export function clearEntireCart(item){
   //  the return of an action creator is the action in the reducer
   return {
-    type: DEL_FROM_CART, 
+    type: CLEAR_ENTIRE_CART, 
     payload: item
   }
 }
