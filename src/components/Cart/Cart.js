@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
-import { addToCart, setToCart, setUser } from '../../redux/reducer';
+import { addToCart, setToCart, setUser, delFromCart } from '../../redux/reducer';
 import { connect } from 'react-redux';
 import './Cart.css';
 
@@ -49,13 +49,14 @@ class Cart extends Component {
   }
 
   handleRemoveBtnClick(itemID){
-    axios.delete('/api/cart/delete', itemID).then(res => {
-      this.setState({cartItems: res.data})
+    axios.delete(`/api/cart/delete${itemID}`).then(res => {
+      this.props.delFromCart(res.data)
     })
+    
   }
 
   render(){
-    let itemsInCart = this.state.cartItems.map((item, i) => {
+    let itemsInCart = this.props.cart.map((item, i) => {
       console.log('items in cart', item)
       return(
           <div className='cart-items-list-wpr'>
@@ -65,7 +66,7 @@ class Cart extends Component {
               <p>$ {item.price} USD</p>
               <p>Quantity</p>
               <input type="number" value={item.quantity}/>
-              <button onClick={this.handleRemoveBtnClick(item.id)} className='cart-item-remove-btn'>Remove</button>
+              <button onClick={() => this.handleRemoveBtnClick(item.id)} className='cart-item-remove-btn'>Remove</button>
             </div>
           </div>
       )
@@ -110,6 +111,6 @@ function mapStateToProps(state){
   }
 }
 
-const actions = { addToCart, setToCart, setUser }
+const actions = { addToCart, setToCart, setUser, delFromCart }
 
 export default connect(mapStateToProps, actions)(Cart);

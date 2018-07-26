@@ -129,7 +129,23 @@ module.exports = {
   },
 
   cartDelete: (req, res, next) => {
-    
+    let {itemID} = req.params;
+    let cartItem = req.session.cart.find((item)=>{
+      console.log('item id', itemID)
+      return item.itemID === itemID
+    })
+    console.log(cartItem)
+    if (cartItem.qty === 1){
+      let arrIndex = req.session.cart.findIndex((item) => {
+        return item.iemID === itemID
+      })
+      req.session.cart.splice(arrIndex, 1)
+    }
+    else{
+      --cartItem.qty
+    }
+    // res.send(req.session.cart)
+    next()
   }
 
 
