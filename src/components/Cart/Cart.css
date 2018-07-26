@@ -67,6 +67,13 @@ hr{
   /* background-color: seagreen; */
 }
 
+.cart-item-remove-btn{
+  display: block;
+  margin-top: 10px;
+  border: none;
+  background-color: white;
+}
+
 .cart-subtotal-container{
   width: 30%;
   text-align: left;

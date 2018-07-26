@@ -111,7 +111,7 @@ module.exports = {
 
   addNewUserInfo: (req, res, next) => {
     const db = req.app.get('db');
-
+    console.log(req.body)
     db.update_user_info([req.body.first_name,
                         req.body.last_name,
                         req.body.company,
@@ -126,6 +126,10 @@ module.exports = {
       console.log(err);
       res.status(500).send(err)
     })
+  },
+
+  cartDelete: (req, res, next) => {
+    
   }
 
 

@@ -47,8 +47,7 @@ app.post('/api/cart/add', c.cartAdd)
 app.get('/api/cart/get', c.getCart)
 app.post('/api/user/info', c.checkForUser)
 app.put('/api/user/update', c.addNewUserInfo)
-// app.get('/api/auth', c.authUser)
-
+app.delete('/api/cart/delete', c.cartDelete)
 
 //LISTEN
 

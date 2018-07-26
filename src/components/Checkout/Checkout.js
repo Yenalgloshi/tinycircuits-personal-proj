@@ -70,15 +70,15 @@ class Checkout extends Component {
 
   handleOrderBtnClick(){
     axios.put('/api/user/update',
-    {email: this.props.email,
-     first_name: this.props.first_name,
-     last_name: this.props.last_name,
-     company: this.props.company,
-     address: this.props.address,
-     city: this.props.city,
-     state: this.props.state,
-     zip: this.props.zip,
-     phone: this.props.phone
+    {email: this.state.email,
+     first_name: this.state.firstName,
+     last_name: this.state.lastName,
+     company: this.state.company,
+     address: this.state.address,
+     city: this.state.city,
+     state: this.state.usState,
+     zip: this.state.zip,
+     phone: this.state.phone
      })
   }
 

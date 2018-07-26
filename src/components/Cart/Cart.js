@@ -18,6 +18,7 @@ class Cart extends Component {
     }
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleCheckoutBtnClick = this.handleCheckoutBtnClick.bind(this);
+    this.handleRemoveBtnClick = this.handleRemoveBtnClick.bind(this);
   }
 
   componentDidMount(){
@@ -47,8 +48,15 @@ class Cart extends Component {
     })
   }
 
+  handleRemoveBtnClick(itemID){
+    axios.delete('/api/cart/delete', itemID).then(res => {
+      this.setState({cartItems: res.data})
+    })
+  }
+
   render(){
     let itemsInCart = this.state.cartItems.map((item, i) => {
+      console.log('items in cart', item)
       return(
           <div className='cart-items-list-wpr'>
             <img src={item.image} className='cart-item-img' alt={item.name}/>
@@ -57,7 +65,7 @@ class Cart extends Component {
               <p>$ {item.price} USD</p>
               <p>Quantity</p>
               <input type="number" value={item.quantity}/>
-              <p>Remove</p>
+              <button onClick={this.handleRemoveBtnClick(item.id)} className='cart-item-remove-btn'>Remove</button>
             </div>
           </div>
       )

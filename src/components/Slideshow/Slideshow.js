@@ -18,7 +18,7 @@ export default class Slideshow extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: true,
-      autoplaySpeed: 5000
+      autoplaySpeed: 4000
     };
     return (
         <Slider {...settings} className='slider'>
