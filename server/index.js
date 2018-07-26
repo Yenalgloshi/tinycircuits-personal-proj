@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const bodyParser = require('body-parser');
+const path = require('path'); // Usually moved to the start of file
 
 //VARIABLES
 const app = express();
@@ -12,6 +13,8 @@ let {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
 
 //TOP LEVEL MIDDLEWARE
+
+
 app.use(session({
   secret: SESSION_SECRET,
   resave: false,
@@ -35,6 +38,12 @@ function checkForCart(req, res, next){
 }
 
 app.use(checkForCart);
+
+app.use( express.static( `${__dirname}/../build` ) );
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 
 //ENDPOINTS
