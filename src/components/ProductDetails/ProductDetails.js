@@ -18,7 +18,8 @@ class ProductDetails extends Component {
       numInStock: 0,
       description: '',
       picture: '',
-      cartQty: 1
+      cartQty: 1,
+      imgs: []
     }    
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleQtyChange = this.handleQtyChange.bind(this);
@@ -27,12 +28,14 @@ class ProductDetails extends Component {
   
   componentDidMount(){
     axios.get(`/api/productDetails/${this.props.match.params.itemId}`).then( res => {
-      this.setState({ name: res.data[0].name,
-        partNum: res.data[0].part_num,
-        price: res.data[0].price,
-        numInStock: res.data[0].stock_qty,
-        description: res.data[0].description,
-        picture: res.data[0].image})
+      console.log(res.data)
+      this.setState({ name: res.data.name,
+        partNum: res.data.part_num,
+        price: res.data.price,
+        numInStock: res.data.stock_qty,
+        description: res.data.description,
+        picture: res.data.image,
+        imgs: res.data.imgsArr})
       })
     }
     

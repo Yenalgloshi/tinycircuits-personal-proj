@@ -28,7 +28,12 @@ module.exports = {
     const db = req.app.get('db');
     let id = parseInt(req.params.itemId);
 
-    db.get_prod_item(id).then(item => { res.status(200).send(item)})
+    db.get_prod_item(id).then(items => 
+      { let newItem = items[0];
+        newItem.imgsArr = items.map((pics) => {
+          return pics.img_url;
+        }) 
+        res.status(200).send(newItem)})
     .catch(err => {
       console.log(err);
       res.status(500).send(err)
