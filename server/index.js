@@ -9,7 +9,7 @@ const path = require('path'); // Usually moved to the start of file
 //VARIABLES
 const app = express();
 const c = require('./controller');
-let {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
+let {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, STRIPE_SECRET} = process.env;
 
 
 //TOP LEVEL MIDDLEWARE
@@ -53,6 +53,7 @@ app.get('/api/cart/get', c.getCart)
 app.post('/api/user/info', c.checkForUser)
 app.put('/api/user/update', c.addNewUserInfo)
 app.delete('/api/cart/delete:itemID', c.cartDelete, c.getCart)
+app.post('/api/payment', c.handlePayment)
 
 //LISTEN
 

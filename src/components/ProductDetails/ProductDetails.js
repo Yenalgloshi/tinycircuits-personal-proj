@@ -28,7 +28,7 @@ class ProductDetails extends Component {
   
   componentDidMount(){
     axios.get(`/api/productDetails/${this.props.match.params.itemId}`).then( res => {
-      console.log(res.data)
+      // console.log('prod details obj',res.data)
       this.setState({ name: res.data.name,
         partNum: res.data.part_num,
         price: res.data.price,

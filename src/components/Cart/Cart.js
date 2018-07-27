@@ -12,7 +12,7 @@ class Cart extends Component {
     super()
 
     this.state={
-      cartItems: [],
+      cartItems: [{price: 0, quantity: 0}],
       subtotal: 0, 
       email: ''
     }
@@ -23,7 +23,9 @@ class Cart extends Component {
 
   componentDidMount(){
     axios.get('/api/cart/get').then( res => {
-      this.setState({cartItems: res.data})
+      let subTotArr = res.data.map(item => item.price * item.quantity)
+      let subTotal = subTotArr.reduce((acc, val) => acc + val)
+      this.setState({cartItems: res.data, subtotal: subTotal})
       this.props.setToCart(res.data)
     })
 }
@@ -50,14 +52,17 @@ class Cart extends Component {
 
   handleRemoveBtnClick(itemID){
     axios.delete(`/api/cart/delete${itemID}`).then(res => {
+      console.log(res.data)
+      let subTotArr = res.data.map(item => item.price * item.quantity)
+      let subtotal = subTotArr.reduce((acc, val) => acc + val)
       this.props.delFromCart(res.data)
+      this.setState({subtotal});
     })
     
   }
 
   render(){
     let itemsInCart = this.props.cart.map((item, i) => {
-      console.log('items in cart', item)
       return(
           <div className='cart-items-list-wpr'>
             <img src={item.image} className='cart-item-img' alt={item.name}/>
@@ -71,6 +76,7 @@ class Cart extends Component {
           </div>
       )
     })
+
 
 
     return(
@@ -89,7 +95,7 @@ class Cart extends Component {
           <div className='cart-subtotal-container'>
             <h3>SUBTOTAL</h3>
             <hr/>
-            <h4>$ 100.00 USD</h4>
+            <h4>$ {this.state.subtotal} USD</h4>
             <p>Excluding tax & shipping</p>
             <input onChange={this.handleEmailChange} 
                    className="cart-email-input"

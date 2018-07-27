@@ -21,6 +21,7 @@ class Checkout extends Component {
       zip: props.user.zip || null,
       phone: props.user.phone || null,
       cart: [],
+      subTot: 0,
       total: 0
     }
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
@@ -34,7 +35,13 @@ class Checkout extends Component {
     this.handleOrderBtnClick = this.handleOrderBtnClick.bind(this);
 
   }
-  
+
+  componentDidMount(){
+    let subTotArr = this.props.cart.map(item => item.price * item.quantity)
+    let subTotal = subTotArr.reduce((acc, val) => acc + val, 0)
+    console.log('subtotal: ', subTotal)
+    this.setState({subTot: subTotal})
+  }
 
   handleFirstNameChange(e){
     this.setState({firstName: e.target.value})
@@ -82,6 +89,19 @@ class Checkout extends Component {
      })
   }
 
+  formatCurrencyNum(num){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      // the default value for minimumFractionDigits depends on the currency
+      // and is usually already 2
+     });
+     return formatter.format(num)
+  }
+
+
+
   render(){
     let checkoutItems = this.props.cart.map((item, i) => {
       console.log('redux store', this.props.cart)
@@ -93,6 +113,7 @@ class Checkout extends Component {
         </div>
       )
     })
+
     return(
       <div className='Checkout'>
         <div className='contact-main-container'>
@@ -216,7 +237,7 @@ class Checkout extends Component {
           <div className='sb-total'>
             <div className='subtotal'>
               <p>Subtotal</p>
-              <p>$</p>
+              <p>{this.formatCurrencyNum(this.state.subTot)}</p>
             </div>
             <div className='shipping'>
               <p>Shipping</p>
@@ -225,7 +246,7 @@ class Checkout extends Component {
             <div className='total'>
               <h4>Total</h4>
               <h3>USD</h3>
-              <h2>$</h2>
+              <h2>{this.formatCurrencyNum(this.state.subTot)}</h2>
             </div>
           </div>
         </div>

@@ -103,7 +103,6 @@ module.exports = {
         res.status(200).send(userRes[0])
       } else {
         db.add_user_email(req.body.email).then(userInfo => {
-          console.log('registration results', userInfo);
           req.session.userId = userInfo[0].user_id;
           res.status(200).send(userInfo[0]);            
         }).catch(err => {
@@ -116,7 +115,7 @@ module.exports = {
 
   addNewUserInfo: (req, res, next) => {
     const db = req.app.get('db');
-    console.log(req.body)
+
     db.update_user_info([req.body.first_name,
                         req.body.last_name,
                         req.body.company,
@@ -139,10 +138,9 @@ module.exports = {
       console.log('item id', itemID)
       return item.itemID === itemID
     })
-    console.log(cartItem)
     if (cartItem.qty === 1){
       let arrIndex = req.session.cart.findIndex((item) => {
-        return item.iemID === itemID
+        return item.itemID === itemID
       })
       req.session.cart.splice(arrIndex, 1)
     }
