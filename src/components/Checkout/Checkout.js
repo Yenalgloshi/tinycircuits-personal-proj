@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { addToCart } from '../../redux/reducer';
 import { connect } from 'react-redux';
+import StripeCheckout from 'react-stripe-checkout';
+import TinyLogo from './../../assets/TinyCircuitsLogo.png';
 import axios from 'axios';
 import './Checkout.css';
 
@@ -22,7 +24,8 @@ class Checkout extends Component {
       phone: props.user.phone || null,
       cart: [],
       subTot: 0,
-      total: 0
+      total: 0,
+      amount: 0
     }
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
@@ -36,59 +39,61 @@ class Checkout extends Component {
 
   }
 
+  
   componentDidMount(){
     let subTotArr = this.props.cart.map(item => item.price * item.quantity)
     let subTotal = subTotArr.reduce((acc, val) => acc + val, 0)
     console.log('subtotal: ', subTotal)
     this.setState({subTot: subTotal})
+    this.setState({amount: subTotal * 100})
   }
-
+  
   handleFirstNameChange(e){
     this.setState({firstName: e.target.value})
   }
-
+  
   handleLastNameChange(e){
     this.setState({lastName: e.target.value})
   }
-
+  
   handleCoChange(e){
     this.setState({company: e.target.value})
   }
-
+  
   handleAddressChange(e){
     this.setState({address: e.target.value})
   }
-
+  
   handleCityChange(e){
     this.setState({city: e.target.value})
   }
-
+  
   handleStateSelector(e){
     this.setState({usState: e.target.value})
   }
-
+  
   handleZipChange(e){
     this.setState({zip: e.target.value})
   }
-
+  
   handlePhoneChange(e){
     this.setState({phone: e.target.value})
   }
-
+  
   handleOrderBtnClick(){
     axios.put('/api/user/update',
     {email: this.state.email,
-     first_name: this.state.firstName,
-     last_name: this.state.lastName,
-     company: this.state.company,
-     address: this.state.address,
-     city: this.state.city,
-     state: this.state.usState,
-     zip: this.state.zip,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      company: this.state.company,
+      address: this.state.address,
+      city: this.state.city,
+      state: this.state.usState,
+      zip: this.state.zip,
      phone: this.state.phone
-     })
+    })
   }
-
+  
   formatCurrencyNum(num){
     var formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -96,12 +101,18 @@ class Checkout extends Component {
       minimumFractionDigits: 2,
       // the default value for minimumFractionDigits depends on the currency
       // and is usually already 2
-     });
-     return formatter.format(num)
+    });
+    return formatter.format(num)
   }
-
-
-
+  
+  onToken = (token) => {
+    token.card = void 0
+    axios.post('/api/payment', {token, amount: this.state.amount}).then(res => {
+        console.log(res)
+    })
+  }
+  
+  
   render(){
     let checkoutItems = this.props.cart.map((item, i) => {
       console.log('redux store', this.props.cart)
@@ -215,7 +226,15 @@ class Checkout extends Component {
               <Link to='/Cart'>
                  <p>  Return to cart </p>
               </Link>
-              <button onClick={this.handleOrderBtnClick}>Complete Order</button>
+              <StripeCheckout
+                name="Tiny Circuits"
+                description="Maker of tiny open source electronics"
+                image={TinyLogo}
+                token= {this.onToken}
+                stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                amount={this.state.amount}
+              />
+              {/* <button onClick={this.handleOrderBtnClick}>Complete Order</button> */}
             </div>
           </div>
           <div className='contact-main-footer'>
