@@ -65,10 +65,10 @@ export function setUser(user){
   }
 }
 
-export function clearEntireCart(item){
+export function clearEntireCart(cart){
   //  the return of an action creator is the action in the reducer
   return {
     type: CLEAR_ENTIRE_CART, 
-    payload: item
+    payload: cart
   }
 }

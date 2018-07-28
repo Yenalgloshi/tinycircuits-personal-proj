@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { addToCart } from '../../redux/reducer';
+import { clearEntireCart } from '../../redux/reducer';
 import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import TinyLogo from './../../assets/TinyCircuitsLogo.png';
@@ -107,8 +107,16 @@ class Checkout extends Component {
   
   onToken = (token) => {
     token.card = void 0
-    axios.post('/api/payment', {token, amount: this.state.amount}).then(res => {
-        console.log(res)
+    axios.post('/api/payment', {token, amount: this.state.amount, session: {cart: this.state.cart}}).then(res => {
+      console.log(res)
+      if(res.data.status.toLowerCase() === "succeeded".toLowerCase()){
+        this.props.clearEntireCart(this.state.cart);
+        let subTotArr = this.state.cart.map(item => item.price * item.quantity)
+        let subTotal = subTotArr.reduce((acc, val) => acc + val, 0)
+        this.setState({cart: [], subTot: subTotal})
+        // this.props.history.push('/');
+      }
+      console.log('session cart', this.state.cart)
     })
   }
   
@@ -226,14 +234,16 @@ class Checkout extends Component {
               <Link to='/Cart'>
                  <p>  Return to cart </p>
               </Link>
-              <StripeCheckout
-                name="Tiny Circuits"
-                description="Maker of tiny open source electronics"
-                image={TinyLogo}
-                token= {this.onToken}
-                stripeKey={process.env.REACT_APP_STRIPE_KEY}
-                amount={this.state.amount}
-              />
+              <div onClick={this.handleOrderBtnClick}>
+                <StripeCheckout
+                  name="Tiny Circuits"
+                  description="Maker of tiny open source electronics"
+                  image={TinyLogo}
+                  token= {this.onToken}
+                  stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                  amount={this.state.amount}
+                  />
+                </div>
               {/* <button onClick={this.handleOrderBtnClick}>Complete Order</button> */}
             </div>
           </div>
@@ -281,4 +291,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, {clearEntireCart})(Checkout);

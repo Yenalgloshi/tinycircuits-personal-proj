@@ -65,7 +65,7 @@ class ProductDetails extends Component {
       let additionalImgs = this.state.imgs.map((pic, i) => {
         console.log('other pics', pic)
         return (
-          <img src={pic} className='details-additional-img' alt=""/>
+            <img src={pic} className='details-additional-img' alt=""/>
         )
       })
       

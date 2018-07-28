@@ -9,6 +9,7 @@
 }
 
 .details-breadcrumb ul li{
+  display: inline-block;
 
 }
 
@@ -17,12 +18,12 @@ ul.details-breadcrumb li:hover{
 }
 
 .details-img-wpr{
-  /* display: inline-block; */
   float: left;
   margin-left: 200px;
 }
 
 .details-img-main{
+  /* width: 840; */
 
 }
 
@@ -30,13 +31,15 @@ ul.details-breadcrumb li:hover{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
 
 }
 
 .details-additional-img{
   width: 128px;
   height: 96px;
-  
+  margin: 20px; 
 }
 
 .details-info{
