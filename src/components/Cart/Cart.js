@@ -61,6 +61,17 @@ class Cart extends Component {
     
   }
 
+  formatCurrencyNum(num){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      // the default value for minimumFractionDigits depends on the currency
+      // and is usually already 2
+    });
+    return formatter.format(num)
+  }
+
   render(){
     let itemsInCart = this.props.cart.map((item, i) => {
       return(
@@ -95,7 +106,7 @@ class Cart extends Component {
           <div className='cart-subtotal-container'>
             <h3>SUBTOTAL</h3>
             <hr/>
-            <h4>$ {this.state.subtotal} USD</h4>
+            <h4>{this.formatCurrencyNum(this.state.subtotal)} USD</h4>
             <p>Excluding tax & shipping</p>
             <input onChange={this.handleEmailChange} 
                    className="cart-email-input"

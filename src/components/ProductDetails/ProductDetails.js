@@ -28,7 +28,7 @@ class ProductDetails extends Component {
   
   componentDidMount(){
     axios.get(`/api/productDetails/${this.props.match.params.itemId}`).then( res => {
-      // console.log('prod details obj',res.data)
+      // console.log('prod details imgs',res.data.imgsArr)
       this.setState({ name: res.data.name,
         partNum: res.data.part_num,
         price: res.data.price,
@@ -62,7 +62,12 @@ class ProductDetails extends Component {
 
     
     render(){
-      
+      let additionalImgs = this.state.imgs.map((pic, i) => {
+        console.log('other pics', pic)
+        return (
+          <img src={pic} className='details-additional-img' alt=""/>
+        )
+      })
       
       return(
         <div className='details'>
@@ -87,7 +92,7 @@ class ProductDetails extends Component {
               <img src={this.state.picture} width='800px' alt={this.state.name}/>
             </div>
             <div className='details-img-selector'>
-
+              {additionalImgs}
             </div>
           </div>
           <div className='details-info'>

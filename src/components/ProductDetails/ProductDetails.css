@@ -27,7 +27,16 @@ ul.details-breadcrumb li:hover{
 }
 
 .details-img-selector{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
+}
+
+.details-additional-img{
+  width: 128px;
+  height: 96px;
+  
 }
 
 .details-info{

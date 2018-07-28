@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+// import {fb} from './../../assets/paymentSVG';
 import './Header.css';
 
 class Header extends Component{
@@ -24,6 +25,7 @@ class Header extends Component{
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>ABOUT US</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>TWITTER</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>FACEBOOK</Link>
+            {/* {fb} */}
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>CONTACT</Link>
             <Link to="/Login" style={{textDecoration: 'none', color: 'white'}}>LOGIN</Link>
             SEARCH
