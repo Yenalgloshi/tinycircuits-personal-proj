@@ -1,10 +1,47 @@
-.slider div img{
+.slider-container div img{
   width: 100%;
-
+  position: relative;
+  text-align: center;
 }
 
 .home-slideshow > div > button{
   display: none !important;
+}
+
+#slide-1-text{
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: #5293ad;
+  font-size: 4.0em;
+}
+
+#slide-2-text{
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  color: #5293ad;
+  font-size: 4.0em;
+}
+
+#slide-3-text{
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  color: #5293ad;
+  font-size: 4.0em;
+}
+
+#slide-4-text{
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  color: #5293ad;
+  font-size: 4.0em;
 }
 
 #root > div > div > div.home-body > div.home-slideshow > div > ul{

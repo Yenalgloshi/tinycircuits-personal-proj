@@ -108,7 +108,7 @@ class Checkout extends Component {
   onToken = (token) => {
     token.card = void 0
     axios.post('/api/payment', {token, amount: this.state.amount, session: {cart: this.state.cart}}).then(res => {
-      console.log(res)
+      console.log('session ')
       if(res.data.status.toLowerCase() === "succeeded".toLowerCase()){
         this.props.clearEntireCart(this.state.cart);
         let subTotArr = this.state.cart.map(item => item.price * item.quantity)

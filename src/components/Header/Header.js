@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-// import {fb} from './../../assets/paymentSVG';
+import { twitter, fb, contact, login, search } from './../../assets/iconsSVG';
 import './Header.css';
 
 class Header extends Component{
@@ -23,12 +23,11 @@ class Header extends Component{
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>DISTRIBUTORS</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>FORUM</Link>
             <Link to="/" style={{textDecoration: 'none', color: 'white'}}>ABOUT US</Link>
-            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>TWITTER</Link>
-            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>FACEBOOK</Link>
-            {/* {fb} */}
-            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>CONTACT</Link>
-            <Link to="/Login" style={{textDecoration: 'none', color: 'white'}}>LOGIN</Link>
-            SEARCH
+            <Link to="/" style={{fill: 'white', color: 'white'}}>{ twitter }</Link>
+            <Link to="/" style={{fill: 'white', color: 'white'}}>{ fb } </Link>
+            <Link to="/" style={{fill: 'white', color: 'white'}}>{ contact }</Link>
+            <Link to="/Login" style={{fill: 'white', color: 'white'}}> { login }</Link>
+            <Link to="/" style={{fill: 'white', color: 'white'}}> { search }</Link>
             <Link to="/Cart">
               <button className='hdr-btn-cart'>CART</button>
             </Link>

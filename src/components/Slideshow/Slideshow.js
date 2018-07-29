@@ -21,18 +21,22 @@ export default class Slideshow extends Component {
       autoplaySpeed: 4000
     };
     return (
-        <Slider {...settings} className='slider'>
+        <Slider {...settings} className='slider-container'>
           <div>
            <img src={slideshow1} alt='tiny-arcade'/>
+           <h1 id='slide-1-text' >TINY ARCADE</h1>
           </div>
           <div>
            <img src={slideshow2} alt='tiny-saber'/>
+           <h1 id='slide-2-text' >TINYSABER</h1>
           </div>
           <div>
            <img src={slideshow3} alt='tiny-gps'/>
+           <h1 id='slide-3-text' >TINY GPS TRACKER</h1>
           </div>
           <div>
            <img src={slideshow4} alt='tiny-iot'/>
+           <h1 id='slide-4-text' >TINY IOT</h1>
           </div>
         </Slider>
     );
