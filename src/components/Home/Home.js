@@ -51,9 +51,18 @@ class Home extends Component {
             <h2 id='divider-txt'>THE TINYDUINO ELECTRONICS PLATFORM <br/>MODULAR, SIMPLE, AND TINY</h2>
           </div>
           <div className='home-prod-links'>
-            <img src={tinyArcadePic} width='380px' alt="tinyArcade"/>
-            <img src={tinyDuinoPic} width='380px' alt="tinyDuino"/>
+            <div className='home-prod-arcade'>
+              <img src={tinyArcadePic} width='380px' alt="tinyArcade"/>
+              <h3>TINY ARCADE</h3>
+            </div>
+            <div className='home-prod-duino'>
+              <img src={tinyDuinoPic} width='380px' alt="tinyDuino"/>
+              <h3>TINYDUINO</h3>
+            </div>
+            <div className='home-prod-tut'>
             <img src={tutorialsPic} width='380px' alt="tutorials"/>
+              <h3>TUTORIALS</h3>
+            </div>
           </div>
             <hr id='feat-hr'/>
             <h2 id='feat-h2'>Featured Products</h2>

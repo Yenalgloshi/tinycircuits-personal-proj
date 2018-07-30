@@ -40,6 +40,17 @@
   width: 80%;
 }
 
+.home-prod-links h3{
+  /* position: relative; */
+}
+
+.home-prod-arcade{
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
 .home-prod-feat{
   display: flex;
   flex-direction: row;
@@ -66,11 +77,12 @@ a:home-featProd{
 #feat-item-name{
   width: 380px;
   text-decoration: none;
+  color: black;
 }
 
 #feat-hr{
   width: 78%;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 #feat-h2{

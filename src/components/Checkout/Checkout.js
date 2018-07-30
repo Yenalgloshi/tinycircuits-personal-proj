@@ -231,10 +231,8 @@ class Checkout extends Component {
                      placeholder='Phone'/>
             </div>
             <div className='contact-main-order'>
-              <Link to='/Cart'>
-                 <p>  Return to cart </p>
-              </Link>
-              <div onClick={this.handleOrderBtnClick}>
+              <Link to='/Cart' className='contact-ret-to-cart'>Return to cart</Link>
+              <div onClick={this.handleOrderBtnClick} className='stripe-btn'>
                 <StripeCheckout
                   name="Tiny Circuits"
                   description="Maker of tiny open source electronics"
@@ -274,8 +272,8 @@ class Checkout extends Component {
             </div>
             <div className='total'>
               <h4>Total</h4>
-              <h3>USD</h3>
-              <h2>{this.formatCurrencyNum(this.state.subTot)}</h2>
+              <h3 id='checkout-cart-tot'>USD</h3>
+              <h2 >{this.formatCurrencyNum(this.state.subTot)}</h2>
             </div>
           </div>
         </div>

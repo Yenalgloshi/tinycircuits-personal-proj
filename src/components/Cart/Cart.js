@@ -30,10 +30,6 @@ class Cart extends Component {
     })
 }
 
-  handleCheckoutBtnClick(){
-
-  }
-
   handleQtySelector(){
 
   }
@@ -78,10 +74,10 @@ class Cart extends Component {
           <div className='cart-items-list-wpr'>
             <img src={item.image} className='cart-item-img' alt={item.name}/>
             <div className='cart-item-details'>
-              <p>{item.name}</p>
-              <p>$ {item.price} USD</p>
+              <p id='cart-item-name'>{item.name}</p>
+              <p id='cart-item-price'>$ {item.price} USD</p>
               <p>Quantity</p>
-              <input type="number" value={item.quantity}/>
+              <input type="number" className='cart-item-qty' value={item.quantity}/>
               <button onClick={() => this.handleRemoveBtnClick(item.id)} className='cart-item-remove-btn'>Remove</button>
             </div>
           </div>
@@ -95,7 +91,7 @@ class Cart extends Component {
       <Header/>
         <div className='cart-subHdr'>
             <h2>SHOPPING CART</h2>
-            <p>Continue Shopping</p>
+            <Link to='/Shop' className='cont-shopping'>Continue Shopping  &#8594;</Link>
         </div>
         <div className='cart-content-wpr'>
           <div className='cart-items-list-container'>
@@ -106,14 +102,14 @@ class Cart extends Component {
           <div className='cart-subtotal-container'>
             <h3>SUBTOTAL</h3>
             <hr/>
-            <h4>{this.formatCurrencyNum(this.state.subtotal)} USD</h4>
+            <h4 id='cart-sub-tot'>{this.formatCurrencyNum(this.state.subtotal)} USD</h4>
             <p>Excluding tax & shipping</p>
             <input onChange={this.handleEmailChange} 
                    className="cart-email-input"
                    type="text" 
                    placeholder='Enter Email to Checkout'/>
             
-              <button onClick={this.handleCheckoutBtnClick}>CHECKOUT</button>
+              <button onClick={this.handleCheckoutBtnClick} className='cart-blue-button'>CHECKOUT</button>
           </div>
         </div>
         <Footer/>

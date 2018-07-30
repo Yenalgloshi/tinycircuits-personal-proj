@@ -3,7 +3,7 @@ import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import {Link} from 'react-router-dom';
 // import { addToCart } from '../../redux/reducer';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import axios from 'axios';
 import './ProductDetails.css';
 

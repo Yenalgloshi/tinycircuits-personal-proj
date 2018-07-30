@@ -18,12 +18,12 @@
   justify-content: space-between;
 }
 
-.contact-main-paypal{
-
+.contact-main-hdr h2{
+  padding-left: 10px;
 }
 
 .input-field-full{
-  width: 96%;
+  width: 95%;
   height: 40px;
   margin: 10px;
 }
@@ -38,8 +38,8 @@
   
 }
 
-.contact-main-input-wpr{
-  
+.contact-main-input-wpr p{
+  padding-left: 10px;
 }
 
 .contact-main-inputs{
@@ -51,11 +51,25 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.contact-ret-to-cart{
+  text-decoration: none;
+  color: #39b5cd;
+  padding: 10px;
+
+}
+
+.contact-main-order p{
+}
+
+.stripe-btn{
+  padding: 20px;
+}
 
 .contact-main-footer{
   display: flex;
   flex-direction: row;
   text-decoration: none;
+  padding-left: 10px;
 }
 
 .contact-main-footer p{
@@ -73,6 +87,7 @@
   background-color: #fafafa;
   box-sizing: border-box;
   padding-top: 50px;
+  padding-right: 5%;
 }
 
 .sb-cart-list{
@@ -94,7 +109,7 @@
 }
 
 #sb-item-name{
-  
+  margin-left: 10px;
 }
 
 #sb-item-price{
@@ -109,15 +124,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 21%;
+  padding-right: 8%;
   padding-left: 12%;
+  padding-top: 40px;
 }
 
 .shipping{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 21%;
+  padding-right: 8%;
   padding-left: 12%;
 }
 
@@ -125,8 +141,17 @@
   display: flex;
   flex-direction: row;
   padding-left: 11%;
+  align-items: center;
 }
 
-.total h3{
+.total h4{
+  margin-left: 9px;
+}
+
+.total h2{
   margin-left: 40px;
+}
+
+#checkout-cart-tot{
+  margin-left: 315px;
 }

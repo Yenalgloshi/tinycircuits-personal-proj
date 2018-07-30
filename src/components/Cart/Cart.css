@@ -14,6 +14,11 @@
   /* background-color: aqua; */
 }
 
+.cont-shopping{
+  text-decoration: none;
+  color: #55c0d4;
+}
+
 .cart-content-wpr{
   display: flex;
   flex-direction: row;
@@ -67,6 +72,25 @@ hr{
   /* background-color: seagreen; */
 }
 
+#cart-item-name{
+  color: #55c0d4;
+  font-weight: bold;
+  font-stretch: expanded;
+}
+
+#cart-item-price{
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.cart-item-qty{
+  width: 30px;
+  height: 20px;
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
 .cart-item-remove-btn{
   display: block;
   margin-top: 10px;
@@ -74,8 +98,44 @@ hr{
   background-color: white;
 }
 
+.cart-item-remove-btn:hover{color: red;}
+
+.cart-item-remove-btn:visited{border: none;}
+
 .cart-subtotal-container{
   width: 30%;
   text-align: left;
   /* background-color: violet; */
 }
+
+#cart-sub-tot{
+  font-size: 1.1em;
+}
+
+.cart-email-input{
+  width: 198px;
+  height: 22px;
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 3px;
+
+}
+
+.cart-blue-button{
+  margin-top: 20px;
+  background-color: #027efc;
+  color: white;
+  width: 206px;
+  height: 30px;
+  border: none;
+  font-size: 1.0em;
+  font-weight: bold;
+  border-radius: 3px;
+  opacity: 1;
+  text-decoration: none;
+  outline: 0;
+}
+
+.cart-blue-button:hover{background-color: black;}
+
+.cart-blue-button:active{background-color: #ff8d5c}
