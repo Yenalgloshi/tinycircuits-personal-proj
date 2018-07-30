@@ -32,7 +32,7 @@ class Home extends Component {
       
       return(
         <div className='home-featProd'>
-          <Link to={`/productDetails/${item.id}`}>
+          <Link to={`/productDetails/${item.id}`} className='featured-product'>
             <img src={item.image} className='featured-img' key={i} alt={item.name}/>
             <h3 id='feat-item-name'>{item.name}</h3>
           </Link>

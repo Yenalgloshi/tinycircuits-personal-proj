@@ -52,6 +52,13 @@
   width: 81%;
 }
 
+a:home-featProd{
+}
+
+.featured-product{
+  text-decoration: none;
+}
+
 .featured-img{
   width: 380px;
 }

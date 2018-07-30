@@ -39,7 +39,7 @@ class Footer extends Component{
                       type="text"
                       placeholder="Enter your email address..."/>
               <button onClick={ this.handleSignUp } 
-                        className="blue-btn">SIGN UP</button>
+                        className="footer-blue-btn">SIGN UP</button>
             </div>
           </div>
         </div>

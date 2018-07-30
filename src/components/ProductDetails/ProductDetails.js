@@ -73,20 +73,11 @@ class ProductDetails extends Component {
         <div className='details'>
         <Header/>
         <div className='details-body'>
-          <div className='details-breadcrumb'>
-            <ul>
-              <Link to="/">
-                <li>Home</li>
-              </Link>
-              <p> / </p>
-              <Link to="/Shop">
-                <li>All Products</li>
-              </Link>
-              <p> / </p>
+          <ul className='details-breadcrumb'>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/Shop">All Products</Link></li>
               <li>{this.state.name}</li>
-            </ul>
-            
-          </div>
+          </ul>
           <div className='details-img-wpr'>
             <div className='details-img-main'>
               <img src={this.state.picture} width='800px' alt={this.state.name}/>
@@ -109,7 +100,7 @@ class ProductDetails extends Component {
                    max="50"
                    onChange={this.handleQtyChange}/>
             <button onClick={ this.handleAddToCart } 
-                      className="blue-btn">ADD TO CART</button>
+                      className="details-blue-btn">ADD TO CART</button>
             <p>{this.state.description}</p>
             <ul style={{listStyleType: 'disc', listStylePosition: 'inside'}} >
               <hr/>

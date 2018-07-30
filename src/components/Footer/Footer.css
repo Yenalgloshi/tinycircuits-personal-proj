@@ -25,6 +25,21 @@
   width: 15%;
 }
 
+.footer-blue-btn{
+  margin-top: 10px;
+  background-color: #027efc;
+  color: white;
+  width: 202px;
+  height: 30px;
+  border: none;
+  font-size: 1.0em;
+  font-weight: bold;
+  border-radius: 3px;
+  opacity: 1;
+  text-decoration: none;
+  outline: 0;
+}
+
 hr{
   width: 20em;
 }
@@ -44,4 +59,6 @@ hr{
   margin-top: 40px;
   padding-top: 50px;
 }
+
+
 

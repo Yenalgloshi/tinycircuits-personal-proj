@@ -3,18 +3,29 @@
   height: 100vh;
 }
 
-.details-breadcrumb{
-  padding: 10px 16px;
+ul.details-breadcrumb{
+  padding: 20px 240px;
   list-style: none;
-}
-
-.details-breadcrumb ul li{
-  display: inline-block;
+  display: flex;
 
 }
 
-ul.details-breadcrumb li:hover{
+ul.breadcrumb li{
+}
+
+ul.details-breadcrumb li+li:before{
+  padding: 8px;
+  content: "/\00a0";
+}
+
+ul.details-breadcrumb li a {
+  color: #55c0d4;
+  text-decoration: none;
+}
+
+ul.details-breadcrumb li a:hover{
   color: red;
+  text-decoration: none;
 }
 
 .details-img-wpr{
@@ -33,8 +44,8 @@ ul.details-breadcrumb li:hover{
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px;
-
 }
+
 
 .details-additional-img{
   width: 128px;
@@ -57,11 +68,11 @@ ul.details-breadcrumb li:hover{
   padding-left: 5px;
 }
 
-.blue-btn{
-  margin-left: 20px;
+.details-blue-btn{
+  margin-left: 10px;
   background-color: #027efc;
   color: white;
-  width: 150px;
+  width: 202px;
   height: 30px;
   border: none;
   font-size: 1.0em;
@@ -72,9 +83,9 @@ ul.details-breadcrumb li:hover{
   outline: 0;
 }
 
-.blue-btn:hover{background-color: black;}
+.details-blue-btn:hover{background-color: black;}
 
-.blue-btn:active{background-color: #ff8d5c}
+.details-blue-btn:active{background-color: #ff8d5c}
 
 .details-description{
 
